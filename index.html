@@ -12,7 +12,8 @@
   <meta name="twitter:title" content="Khảo sát ứng dụng AI trong công việc — MENTOR FOUNDATIONS 2026">
   <meta name="twitter:description" content="Kính gửi các Mentor — Dành 2 phút trả lời khảo sát ngắn để GIVEHADA thiết kế đúng nội dung đào tạo AI cho hệ thống Mentor Foundations 2026.">
   <style>
-    *, ::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
       --bg:          #F7F4EF;
       --white:       #FFFFFF;
@@ -27,6 +28,7 @@
       --border-hov:  rgba(156,122,66,0.35);
       --border-sel:  rgba(156,122,66,0.65);
     }
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -36,7 +38,10 @@
       min-height: 100vh;
       padding: 64px 20px 88px;
     }
+
     .wrap { max-width: 540px; margin: 0 auto; }
+
+    /* Header */
     .brand-label {
       font-size: 10px;
       font-weight: 700;
@@ -45,6 +50,7 @@
       color: var(--gold);
       margin-bottom: 16px;
     }
+
     h1 {
       font-size: 26px;
       font-weight: 300;
@@ -53,6 +59,7 @@
       color: var(--text);
       margin-bottom: 28px;
     }
+
     .desc {
       background: var(--white);
       border-left: 2px solid var(--gold);
@@ -62,11 +69,17 @@
       color: var(--muted);
       line-height: 1.9;
     }
+
     .desc strong { color: var(--text); font-weight: 600; }
+
     .line { height: 1px; background: var(--border); margin: 40px 0; }
+
     .req-note { font-size: 12px; color: var(--dim); margin-bottom: 32px; }
     .req-note span { color: var(--gold); font-weight: 700; }
+
+    /* Question */
     .q-block { margin-bottom: 40px; }
+
     .q-tag {
       font-size: 10px;
       font-weight: 700;
@@ -75,6 +88,7 @@
       color: var(--gold);
       margin-bottom: 7px;
     }
+
     .q-text {
       font-size: 15.5px;
       font-weight: 500;
@@ -82,13 +96,17 @@
       line-height: 1.5;
       margin-bottom: 16px;
     }
+
     .hint {
       font-size: 11.5px;
       color: var(--dim);
       font-weight: 400;
       margin-left: 6px;
     }
+
+    /* Options */
     .opts { display: flex; flex-direction: column; gap: 8px; }
+
     .opt {
       display: flex;
       align-items: flex-start;
@@ -101,8 +119,10 @@
       transition: border-color 0.16s, background 0.16s;
       user-select: none;
     }
+
     .opt:hover { border-color: var(--border-hov); background: var(--gold-bg); }
     .opt:has(input:checked) { border-color: var(--border-sel); background: var(--gold-bg-sel); }
+
     .opt input[type="radio"],
     .opt input[type="checkbox"] {
       appearance: none;
@@ -116,12 +136,15 @@
       background: var(--white);
       transition: border-color 0.16s, background 0.16s;
     }
+
     .opt input[type="checkbox"] { border-radius: 4px; }
+
     .opt input[type="radio"]:checked,
     .opt input[type="checkbox"]:checked {
       border-color: var(--gold);
       background: var(--gold);
     }
+
     .opt input[type="radio"]:checked::after {
       content: '';
       position: absolute;
@@ -131,16 +154,21 @@
       top: 50%; left: 50%;
       transform: translate(-50%,-50%);
     }
+
     .opt input[type="checkbox"]:checked::after {
-      content: '\2713';
+      content: '✓';
       position: absolute;
       font-size: 10px; line-height: 1;
       color: #fff;
       top: 50%; left: 50%;
       transform: translate(-50%,-50%);
     }
+
     .opt-text { font-size: 14px; color: var(--text); line-height: 1.55; flex: 1; }
+
+    /* Other field */
     .other-field { margin-top: 10px; display: none; }
+
     .other-field input {
       width: 100%;
       background: transparent;
@@ -153,8 +181,11 @@
       outline: none;
       transition: border-color 0.16s;
     }
+
     .other-field input:focus { border-bottom-color: var(--gold); }
     .other-field input::placeholder { color: var(--dim); }
+
+    /* Validation error */
     .err-msg {
       display: none;
       font-size: 11.5px;
@@ -162,7 +193,33 @@
       margin-top: 8px;
       padding-left: 2px;
     }
+
     .err-msg.show { display: block; }
+
+    /* Text input field */
+    .text-field {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 13px 16px;
+      transition: border-color 0.16s;
+    }
+
+    .text-field:focus-within { border-color: var(--border-sel); }
+
+    .text-field input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .text-field input::placeholder { color: var(--dim); }
+
+    /* Submit */
     .submit-btn {
       width: 100%;
       padding: 15px;
@@ -179,14 +236,21 @@
       transition: background 0.18s, opacity 0.18s;
       margin-top: 4px;
     }
+
     .submit-btn:hover:not(:disabled) { background: var(--gold-lt); }
     .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    /* Success */
     .success { display: none; padding: 72px 0 40px; text-align: center; }
     .success.show { display: block; }
+
     .success-rule { width: 28px; height: 2px; background: var(--gold); margin: 0 auto 28px; }
+
     .success-title { font-size: 22px; font-weight: 300; color: var(--text); margin-bottom: 14px; }
     .success-body { font-size: 13.5px; color: var(--muted); line-height: 1.85; }
     .success-body strong { color: var(--text); font-weight: 600; }
+
+    /* Footer */
     .footer {
       margin-top: 60px;
       padding-top: 22px;
@@ -196,27 +260,47 @@
       text-align: center;
       letter-spacing: 0.06em;
     }
+
     .footer strong { color: var(--muted); font-weight: 600; }
+
     @media (max-width: 480px) {
       body { padding: 44px 16px 64px; }
       h1 { font-size: 22px; }
     }
+
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
   </style>
 </head>
 <body>
 <div class="wrap">
+
+  <!-- Header -->
   <div class="brand-label">GIVEHADA — MENTOR FOUNDATIONS 2026</div>
   <h1>Khảo sát ứng dụng AI<br>trong công việc</h1>
+
   <div class="desc">
     Kính gửi các Mentor,<br><br>
     AI ngày nay có thể hỗ trợ viết bài bán hàng, trả lời khách nhanh hơn, tạo hình ảnh sản phẩm và lên kế hoạch kinh doanh — những việc vốn chiếm nhiều thời gian mỗi ngày.<br><br>
     Để chương trình hỗ trợ đi đúng nhu cầu thực tế của các Mentor, các chị dành 2 phút trả lời bảng khảo sát ngắn này. Không có câu trả lời đúng hay sai. Mọi thông tin chị chia sẻ đều giúp thiết kế nội dung đào tạo, công cụ và tài liệu sát với công việc thực tế, để mỗi Master đều có thể bắt đầu dùng AI một cách dễ dàng, dù trước đây đã quen hay chưa từng tiếp xúc.<br><br>
     <strong>Cảm ơn các Mentor!</strong>
   </div>
+
   <div class="line"></div>
+
   <form id="form" novalidate>
     <p class="req-note">Câu có dấu <span>*</span> là bắt buộc trả lời.</p>
+
+    <!-- Họ và tên -->
+    <div class="q-block">
+      <div class="q-tag">Thông tin *</div>
+      <div class="q-text">Họ và tên của anh/chị</div>
+      <div class="text-field">
+        <input type="text" id="inp-name" placeholder="Ví dụ: Nguyễn Thị Mai…" autocomplete="name">
+      </div>
+      <div class="err-msg" id="err-name">Vui lòng nhập họ và tên.</div>
+    </div>
+
+    <!-- Q1 — Radio + Other -->
     <div class="q-block">
       <div class="q-tag">Câu 1 *</div>
       <div class="q-text">Anh/chị đã dùng công cụ AI nào trong công việc bán hàng chưa?</div>
@@ -232,6 +316,8 @@
       </div>
       <div class="err-msg" id="err-q1">Vui lòng chọn một câu trả lời.</div>
     </div>
+
+    <!-- Q2 — Checkbox + Other (required) -->
     <div class="q-block">
       <div class="q-tag">Câu 2 *</div>
       <div class="q-text">Nếu đã dùng, anh/chị dùng AI vào việc gì?<span class="hint">chọn nhiều</span></div>
@@ -247,6 +333,8 @@
       </div>
       <div class="err-msg" id="err-q2">Vui lòng chọn ít nhất một câu trả lời.</div>
     </div>
+
+    <!-- Q3 — Checkbox + Other (required) -->
     <div class="q-block">
       <div class="q-tag">Câu 3 *</div>
       <div class="q-text">Công cụ AI nào anh/chị đang dùng?<span class="hint">chọn nhiều</span></div>
@@ -262,6 +350,8 @@
       </div>
       <div class="err-msg" id="err-q3">Vui lòng chọn ít nhất một câu trả lời.</div>
     </div>
+
+    <!-- Q4 — Radio, không có Other -->
     <div class="q-block">
       <div class="q-tag">Câu 4 *</div>
       <div class="q-text">Rào cản lớn nhất khiến anh/chị chưa dùng AI nhiều?</div>
@@ -273,6 +363,8 @@
       </div>
       <div class="err-msg" id="err-q4">Vui lòng chọn một câu trả lời.</div>
     </div>
+
+    <!-- Q5 — Radio + Other -->
     <div class="q-block">
       <div class="q-tag">Câu 5 *</div>
       <div class="q-text">Anh/chị nhìn nhận AI sẽ giúp gì cho việc phát triển kinh doanh của mình trong 6 tháng tới?</div>
@@ -288,6 +380,8 @@
       </div>
       <div class="err-msg" id="err-q5">Vui lòng chọn một câu trả lời.</div>
     </div>
+
+    <!-- Q6 — Radio, không có Other -->
     <div class="q-block">
       <div class="q-tag">Câu 6 *</div>
       <div class="q-text">Anh/chị dùng AI với thiết bị gì?</div>
@@ -298,9 +392,12 @@
       </div>
       <div class="err-msg" id="err-q6">Vui lòng chọn một câu trả lời.</div>
     </div>
+
     <div class="line"></div>
     <button type="submit" class="submit-btn" id="btn-submit">Gửi câu trả lời</button>
   </form>
+
+  <!-- Success -->
   <div class="success" id="success">
     <div class="success-rule"></div>
     <div class="success-title">Cảm ơn các Mentor.</div>
@@ -309,22 +406,28 @@
       Chúng tôi sẽ sớm liên hệ về chương trình đào tạo AI<br>dành riêng cho MENTOR FOUNDATIONS 2026.
     </p>
   </div>
+
   <div class="footer">
     <strong>GIVEHADA</strong> &nbsp;·&nbsp; MENTOR FOUNDATIONS 2026 &nbsp;·&nbsp; Pharmesthetic
   </div>
 </div>
+
 <script>
+  // ── Toggle "Khác" text fields ──
+  // Radio "Other" toggles
   [['rb-q1-other','field-q1-other','txt-q1-other','q1'],
    ['rb-q5-other','field-q5-other','txt-q5-other','q5']].forEach(([rbId,fId,tId,name])=>{
     const rb=document.getElementById(rbId);
     const fd=document.getElementById(fId);
-    document.querySelectorAll('input[name="'+name+'"]').forEach(r=>{
+    document.querySelectorAll(`input[name="${name}"]`).forEach(r=>{
       r.addEventListener('change',()=>{
         fd.style.display=(r.id===rbId&&r.checked)?'block':'none';
         if(r.id===rbId&&r.checked) document.getElementById(tId).focus();
       });
     });
   });
+
+  // Checkbox "Other" toggles
   [['cb-q2-other','field-q2-other','txt-q2-other'],
    ['cb-q3-other','field-q3-other','txt-q3-other']].forEach(([cbId,fId,tId])=>{
     const cb=document.getElementById(cbId);
@@ -334,21 +437,28 @@
       if(cb.checked) document.getElementById(tId).focus();
     });
   });
-  const getRadio=(name)=>document.querySelector('input[name="'+name+'"]:checked');
-  const getChecked=(name)=>[...document.querySelectorAll('input[name="'+name+'"]:checked')];
+
+  // ── Helpers ──
+  const getRadio=(name)=>document.querySelector(`input[name="${name}"]:checked`);
+  const getChecked=(name)=>[...document.querySelectorAll(`input[name="${name}"]:checked`)];
+
   const cbVal=(name,otherId,otherTxtId)=>getChecked(name).map(el=>{
     if(el.value==='Khác'){const v=document.getElementById(otherTxtId)?.value.trim();return v?'Khác: '+v:'Khác';}
     return el.value;
   }).join(', ');
+
   const rbVal=(name,otherId,otherTxtId)=>{
     const el=getRadio(name);
     if(!el) return '';
     if(el.value==='Khác'){const v=document.getElementById(otherTxtId)?.value.trim();return v?'Khác: '+v:'Khác';}
     return el.value;
   };
+
+  // ── Validation ──
   const validate=()=>{
     let ok=true;
     const checks=[
+      {id:'err-name', pass:document.getElementById('inp-name').value.trim().length>0},
       {id:'err-q1', pass:!!getRadio('q1')},
       {id:'err-q2', pass:getChecked('q2').length>0},
       {id:'err-q3', pass:getChecked('q3').length>0},
@@ -363,7 +473,11 @@
     });
     return ok;
   };
+
+  // !! Dán URL Google Apps Script sau khi Deploy vào đây !!
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxxIyIx7fmIjbyRMKa8s91s6oAUcfM7Popsx_jYgfkfY_X6frUwv2j4hKlUP0YPgB_gCA/exec';
+
+  // ── Submit ──
   document.getElementById('form').addEventListener('submit',async(e)=>{
     e.preventDefault();
     if(!validate()){
@@ -373,8 +487,10 @@
     }
     const btn=document.getElementById('btn-submit');
     btn.disabled=true; btn.textContent='Đang gửi…';
+
     const payload={
       timestamp:    new Date().toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}),
+      hoTen: document.getElementById('inp-name').value.trim(),
       q1: rbVal('q1','rb-q1-other','txt-q1-other'),
       q2: cbVal('q2','cb-q2-other','txt-q2-other'),
       q3: cbVal('q3','cb-q3-other','txt-q3-other'),
@@ -382,6 +498,7 @@
       q5: rbVal('q5','rb-q5-other','txt-q5-other'),
       q6: getRadio('q6')?.value||''
     };
+
     try{
       await fetch(SCRIPT_URL,{
         method: 'POST',
@@ -397,6 +514,13 @@
       alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
     }
   });
+
+  // Hide error khi gõ tên
+  document.getElementById('inp-name').addEventListener('input',()=>{
+    document.getElementById('err-name').classList.remove('show');
+  });
+
+  // Hide error on interaction
   document.querySelectorAll('.opt input').forEach(el=>{
     el.addEventListener('change',()=>{
       const name=el.name;
